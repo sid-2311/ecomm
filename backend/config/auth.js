@@ -1,0 +1,98 @@
+require("dotenv").config();
+const crypto = require("crypto");
+const jwt = require("jsonwebtoken");
+const Admin = require("../models/Admin");
+
+const signInToken = (user) => {
+  return jwt.sign(
+    {
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      address: user.address,
+      phone: user.phone,
+      image: user.image,
+    },
+    process.env.JWT_SECRET,
+    {
+      expiresIn: "1d",
+    }
+  );
+};
+
+const tokenForVerify = (user) => {
+  return jwt.sign(
+    {
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      password: user.password,
+    },
+    process.env.JWT_SECRET_FOR_VERIFY,
+    { expiresIn: "15m" }
+  );
+};
+
+const isAuth = async (req, res, next) => {
+  const { authorization } = req.headers;
+  // console.log("authorization", req.headers);
+  try {
+    const token = authorization.split(" ")[1];
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = decoded;
+    next();
+  } catch (err) {
+    res.status(401).send({
+      message: err.message,
+    });
+  }
+};
+
+const isAdmin = async (req, res, next) => {
+  const admin = await Admin.findOne({ role: "Admin" });
+  if (admin) {
+    next();
+  } else {
+    res.status(401).send({
+      message: "User is not Admin",
+    });
+  }
+};
+
+// Use a fallback secret if ENCRYPT_PASSWORD is not provided to avoid runtime crashes.
+// For production, you SHOULD set process.env.ENCRYPT_PASSWORD to a strong secret.
+const secretKey = process.env.ENCRYPT_PASSWORD || "fallback_encryption_secret";
+
+// Ensure the secret key is exactly 32 bytes (256 bits)
+const key = crypto.createHash("sha256").update(secretKey).digest();
+
+// Helper function to encrypt data
+const handleEncryptData = (data) => {
+  try {
+    // Ensure the input is a string or convert it to a string
+    const dataToEncrypt = typeof data === "string" ? data : JSON.stringify(data);
+
+    // Generate a new IV for each encryption (security best practice)
+    const iv = crypto.randomBytes(16); // AES-CBC requires a 16-byte IV
+
+    const cipher = crypto.createCipheriv("aes-256-cbc", key, iv);
+    let encryptedData = cipher.update(dataToEncrypt, "utf8", "hex");
+    encryptedData += cipher.final("hex");
+
+    return {
+      data: encryptedData,
+      iv: iv.toString("hex"),
+    };
+  } catch (err) {
+    console.error("Encryption error:", err.message);
+    throw new Error("Failed to encrypt data: " + err.message);
+  }
+};
+
+module.exports = {
+  isAuth,
+  isAdmin,
+  signInToken,
+  tokenForVerify,
+  handleEncryptData,
+};
