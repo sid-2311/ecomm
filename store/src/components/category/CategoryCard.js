@@ -70,7 +70,7 @@ const CategoryCard = ({ title, icon, nested, id }) => {
           />
         )}
 
-        <div className="inline-flex items-center justify-between ml-3 text-sm font-medium w-full hover:text-emerald-600">
+        <div className="inline-flex items-center justify-between ml-3 text-sm font-medium w-full hover:text-[#D9AA34]">
           {title}
           {nested?.length > 0 && (
             <span className="transition duration-700 ease-in-out inline-flex loading-none items-end text-gray-400">
