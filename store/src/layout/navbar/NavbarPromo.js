@@ -75,8 +75,8 @@ const NavbarPromo = () => {
 
   return (
     <>
-      <div className="hidden lg:block xl:block text-black bg-[#D9AA34] border-b">
-        <div className="max-w-screen-2xl mx-auto px-3 sm:px-10 h-12 flex justify-between items-center">
+      <div className="hidden lg:block xl:block text-white bg-black border-b-none text-nowrap">
+        <div className="max-w-screen-2xl mx-auto px-3 sm:px-0 h-12 flex justify-between items-center">
           <div className="inline-flex order-2">
             <Popover className="relative">
               <div className="max-w-7xl mx-auto">
@@ -333,7 +333,7 @@ const NavbarPromo = () => {
               </div>
             </Popover>
           </div>
-          <div className="flex order-1">
+          <div className="hidden flex order-1">
             {/* flag */}
             <div className="dropdown">
               <div

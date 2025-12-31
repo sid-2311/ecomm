@@ -59,7 +59,7 @@ const Coupon = ({ couponInHome }) => {
               </figure>
               <div className="ml-3">
                 <div className="flex items-center font-serif">
-                  <h6 className="pl-1 text-base font-medium text-gray-600">
+                  <h6 className="pl-1 text-base font-medium text-[#D9AA34]">
                     <span className="text-lg md:text-xl lg:text-xl text-[#D9AA34] font-bold">
                       {coupon?.discountType?.type === "fixed" ? (
                         <span>${coupon?.discountType?.value}</span>
@@ -71,7 +71,7 @@ const Coupon = ({ couponInHome }) => {
                   </h6>
                   <div className="ml-2">
                     {dayjs().isAfter(dayjs(coupon.endTime)) ? (
-                      <span className="text-red-600 inline-block px-4 py-1 rounded-full font-medium text-xs bg-red-100">
+                      <span className="text-black inline-block px-4 py-1 rounded-full font-medium text-xs bg-[#D9AA34]">
                         Inactive
                       </span>
                     ) : (
@@ -81,7 +81,7 @@ const Coupon = ({ couponInHome }) => {
                     )}
                   </div>
                 </div>
-                <h2 className="pl-1 font-serif text-base text-gray-700 leading-6 font-semibold mb-2">
+                <h2 className="pl-1 font-serif text-base text-[#D9AA34] leading-6 font-semibold mb-2">
                   {showingTranslateValue(coupon?.title)}
                 </h2>
                 {dayjs().isAfter(dayjs(coupon.endTime)) ? (
@@ -120,7 +120,7 @@ const Coupon = ({ couponInHome }) => {
               <div className="info flex items-center">
                 <div className="w-full">
                   <div className="block">
-                    <div className="font-serif border border-dashed bg-emerald-50 py-1 border-emerald-300 rounded-lg text-center block">
+                    <div className="font-serif border border-dashed bg-[#D9AA34] py-1 border-[#D9AA34] rounded-lg text-center text-black block">
                       <CopyToClipboard
                         text={coupon.couponCode}
                         onCopy={() => handleCopied(coupon.couponCode)}
@@ -131,7 +131,7 @@ const Coupon = ({ couponInHome }) => {
                               Copied!
                             </span>
                           ) : (
-                            <span className="uppercase font-serif font-semibold text-sm leading-7 text-emerald-600">
+                            <span className="uppercase font-serif font-semibold text-sm leading-7 ">
                               {coupon.couponCode}{" "}
                             </span>
                           )}
@@ -139,7 +139,7 @@ const Coupon = ({ couponInHome }) => {
                       </CopyToClipboard>
                     </div>
                   </div>
-                  <p className="text-xs leading-4 text-gray-500 mt-2">
+                  <p className="text-xs leading-4 text-[#D9AA34] mt-2">
                     * This coupon apply when shopping more then{" "}
                     <span className="font-bold">
                       {currency}
@@ -199,7 +199,7 @@ const Coupon = ({ couponInHome }) => {
                 <h2 className="font-serif text-lg leading-6 font-medium mb-3">
                   {showingTranslateValue(coupon?.title)}
                 </h2>
-                <h2 className="pl-1 text-base font-medium text-gray-600">
+                <h2 className="pl-1 text-base font-medium text-[#D9AA34]">
                   <span className="text-lg md:text-xl lg:text-xl text-red-500 font-bold">
                     {coupon?.discountType?.type === "fixed" ? (
                       <span>${coupon?.discountType?.value}</span>
@@ -207,7 +207,7 @@ const Coupon = ({ couponInHome }) => {
                       <span>{coupon?.discountType?.value}%</span>
                     )}
                   </span>{" "}
-                  Off
+                  <span className="!text-[#D9AA34]" style={{color:"#D9AA34"}}>Off</span>
                 </h2>
               </div>
             </div>
@@ -250,6 +250,7 @@ const Coupon = ({ couponInHome }) => {
                     </div>
                   </div>
                   <p className="text-xs leading-5 text-gray-500 mt-2">
+
                     * This coupon code will apply on when you shopping more then{" "}
                     <span className="font-bold text-gray-700">
                       {currency}

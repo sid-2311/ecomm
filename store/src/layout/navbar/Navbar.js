@@ -5,7 +5,19 @@ import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { useCart } from "react-use-cart";
 import { IoSearchOutline } from "react-icons/io5";
-import { FiShoppingCart, FiUser, FiBell, FiGift, FiAlertCircle, FiHelpCircle, FiShoppingBag, FiFileText, FiUsers, FiPocket, FiPhoneIncoming } from "react-icons/fi";
+import {
+  FiShoppingCart,
+  FiUser,
+  FiBell,
+  FiGift,
+  FiAlertCircle,
+  FiHelpCircle,
+  FiShoppingBag,
+  FiFileText,
+  FiUsers,
+  FiPocket,
+  FiPhoneIncoming,
+} from "react-icons/fi";
 import useTranslation from "next-translate/useTranslation";
 import { Transition, Popover } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/outline";
@@ -23,7 +35,8 @@ import { SidebarContext } from "@context/SidebarContext";
 const Navbar = () => {
   const { t, lang } = useTranslation("common");
   const [searchText, setSearchText] = useState("");
-  const { toggleCartDrawer, isLoading, setIsLoading } = useContext(SidebarContext);
+  const { toggleCartDrawer, isLoading, setIsLoading } =
+    useContext(SidebarContext);
   const { totalItems } = useCart();
   const router = useRouter();
 
@@ -60,7 +73,7 @@ const Navbar = () => {
       <CartDrawer />
       <div className="bg-black text-white sticky top-0 z-20">
         <div className="max-w-screen-2xl mx-auto px-3 sm:px-10">
-          <div className="top-bar h-16 lg:h-auto flex items-center justify-between py-4 mx-auto">
+          <div className="top-bar h-16 lg:h-auto flex items-center justify-start py-4 mx-auto">
             <Link
               href="/"
               className="mr-3 lg:mr-12 xl:mr-12 hidden md:hidden lg:block"
@@ -105,12 +118,16 @@ const Navbar = () => {
                   </form>
                 </div>
               </div>
+              {/* second header */}
+              <NavbarPromo />
             </div>
-            <div className="hidden md:hidden md:items-center lg:flex xl:block absolute inset-y-0 right-0 pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-              <Popover className="relative mr-4">
+            <div className="hidden md:hidden md:items-center lg:flex xl:block absolute inset-y-0 right-0 pr-2 sm:static sm:inset-auto sm:ml-auto sm:pr-0">
+              <Popover className="hidden relative mr-4">
                 <Popover.Button className="text-white text-sm font-serif inline-flex items-center">
                   <span className="hidden sm:inline">
-                    {showingTranslateValue(storeCustomizationSetting?.navbar?.pages)}
+                    {showingTranslateValue(
+                      storeCustomizationSetting?.navbar?.pages
+                    )}
                   </span>
                   <ChevronDownIcon className="ml-1 h-4 w-4" />
                 </Popover.Button>
@@ -126,23 +143,68 @@ const Navbar = () => {
                 >
                   <Popover.Panel className="absolute z-10 right-0 mt-2 w-56 bg-white text-black rounded-md shadow-lg">
                     <div className="py-2">
-                      {storeCustomizationSetting?.navbar?.offers_menu_status && (
-                        <Link href="/offer" onClick={() => setIsLoading(!isLoading)} className="block px-4 py-2 text-sm hover:bg-gray-100">{showingTranslateValue(storeCustomizationSetting?.navbar?.offers)}</Link>
+                      {storeCustomizationSetting?.navbar
+                        ?.offers_menu_status && (
+                        <Link
+                          href="/offer"
+                          onClick={() => setIsLoading(!isLoading)}
+                          className="block px-4 py-2 text-sm hover:bg-gray-100"
+                        >
+                          {showingTranslateValue(
+                            storeCustomizationSetting?.navbar?.offers
+                          )}
+                        </Link>
                       )}
-                      <Link href="/checkout" onClick={() => setIsLoading(!isLoading)} className="block px-4 py-2 text-sm hover:bg-gray-100">{showingTranslateValue(storeCustomizationSetting?.navbar?.checkout)}</Link>
+                      <Link
+                        href="/checkout"
+                        onClick={() => setIsLoading(!isLoading)}
+                        className="block px-4 py-2 text-sm hover:bg-gray-100"
+                      >
+                        {showingTranslateValue(
+                          storeCustomizationSetting?.navbar?.checkout
+                        )}
+                      </Link>
                       {storeCustomizationSetting?.navbar?.faq_status && (
-                        <Link href="/faq" onClick={() => setIsLoading(!isLoading)} className="block px-4 py-2 text-sm hover:bg-gray-100">{showingTranslateValue(storeCustomizationSetting?.navbar?.faq)}</Link>
+                        <Link
+                          href="/faq"
+                          onClick={() => setIsLoading(!isLoading)}
+                          className="block px-4 py-2 text-sm hover:bg-gray-100"
+                        >
+                          {showingTranslateValue(
+                            storeCustomizationSetting?.navbar?.faq
+                          )}
+                        </Link>
                       )}
                       {storeCustomizationSetting?.navbar?.about_menu_status && (
-                        <Link href="/about-us" onClick={() => setIsLoading(!isLoading)} className="block px-4 py-2 text-sm hover:bg-gray-100">{showingTranslateValue(storeCustomizationSetting?.navbar?.about_us)}</Link>
+                        <Link
+                          href="/about-us"
+                          onClick={() => setIsLoading(!isLoading)}
+                          className="block px-4 py-2 text-sm hover:bg-gray-100"
+                        >
+                          {showingTranslateValue(
+                            storeCustomizationSetting?.navbar?.about_us
+                          )}
+                        </Link>
                       )}
-                      {storeCustomizationSetting?.navbar?.contact_menu_status && (
-                        <Link href="/contact-us" onClick={() => setIsLoading(!isLoading)} className="block px-4 py-2 text-sm hover:bg-gray-100">{showingTranslateValue(storeCustomizationSetting?.navbar?.contact_us)}</Link>
+                      {storeCustomizationSetting?.navbar
+                        ?.contact_menu_status && (
+                        <Link
+                          href="/contact-us"
+                          onClick={() => setIsLoading(!isLoading)}
+                          className="block px-4 py-2 text-sm hover:bg-gray-100"
+                        >
+                          {showingTranslateValue(
+                            storeCustomizationSetting?.navbar?.contact_us
+                          )}
+                        </Link>
                       )}
                     </div>
                   </Popover.Panel>
                 </Transition>
               </Popover>
+
+              {/* second header */}
+              {/* <NavbarPromo /> */}
 
               <button
                 className="pr-5 text-white text-2xl font-bold"
@@ -197,7 +259,7 @@ const Navbar = () => {
         </div>
 
         {/* second header */}
-        <NavbarPromo />
+        {/* <NavbarPromo /> */}
       </div>
     </>
   );
