@@ -317,14 +317,14 @@ const NavbarPromo = () => {
                       <Link
                         href="/offer"
                         onClick={() => setIsLoading(!isLoading)}
-                        className="relative inline-flex items-center  bg-red-100 font-serif ml-4 py-0 px-2 rounded text-sm font-medium text-red-500 hover:text-emerald-600"
+                        className="relative inline-flex items-center  bg-[#D9AA34] font-serif ml-4 py-0 px-2 rounded text-sm font-medium text-black  "
                       >
                         {showingTranslateValue(
                           storeCustomizationSetting?.navbar?.offers
                         )}
                         <div className="absolute flex w-2 h-2 left-auto -right-1 -top-1">
-                          <span className="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-red-400 opacity-75"></span>
-                          <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+                          <span className="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-white opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
                         </div>
                       </Link>
                     )}

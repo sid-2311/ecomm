@@ -34,19 +34,19 @@ const CouponDetails = ({ coupon }) => {
             {dayjs().isAfter(dayjs(coupon.endTime)) ? (
               <span className="inline-block mb-2">
                 <div className="flex items-center font-semibold">
-                  <span className="flex items-center justify-center bg-red-100 text-sm font-serif font-semibold px-2 py-1 rounded mx-1">
+                  <span className="flex items-center justify-center bg-[#D9AA34] text-black text-sm font-serif font-semibold px-2 py-1 rounded mx-1">
                     00
                   </span>
                   :
-                  <span className="flex items-center justify-center bg-red-100 text-sm font-serif font-semibold px-2 py-1 rounded mx-1">
+                  <span className="flex items-center justify-center bg-[#D9AA34] text-black text-sm font-serif font-semibold px-2 py-1 rounded mx-1">
                     00
                   </span>
                   :
-                  <span className="flex items-center justify-center bg-red-100 text-sm font-serif font-semibold px-2 py-1 rounded mx-1">
+                  <span className="flex items-center justify-center bg-[#D9AA34] text-black text-sm font-serif font-semibold px-2 py-1 rounded mx-1">
                     00
                   </span>
                   :
-                  <span className="flex items-center justify-center bg-red-100 text-sm font-serif font-semibold px-2 py-1 rounded mx-1">
+                  <span className="flex items-center justify-center bg-[#D9AA34] text-black text-sm font-serif font-semibold px-2 py-1 rounded mx-1">
                     00
                   </span>
                 </div>

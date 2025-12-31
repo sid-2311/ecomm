@@ -171,19 +171,19 @@ const Coupon = ({ couponInHome }) => {
                 {dayjs().isAfter(dayjs(coupon.endTime)) ? (
                   <span className="inline-block mb-2">
                     <div className="flex items-center font-semibold">
-                      <span className="flex items-center justify-center bg-red-100 text-sm font-serif font-semibold px-2 py-1 rounded mx-1">
+                      <span className="flex items-center justify-center bg-[#D9AA34] text-black text-sm font-serif font-semibold px-2 py-1 rounded mx-1">
                         00
                       </span>
                       :
-                      <span className="flex items-center justify-center bg-red-100 text-sm font-serif font-semibold px-2 py-1 rounded mx-1">
+                      <span className="flex items-center justify-center bg-[#D9AA34] text-black text-sm font-serif font-semibold px-2 py-1 rounded mx-1">
                         00
                       </span>
                       :
-                      <span className="flex items-center justify-center bg-red-100 text-sm font-serif font-semibold px-2 py-1 rounded mx-1">
+                      <span className="flex items-center justify-center bg-[#D9AA34] text-black text-sm font-serif font-semibold px-2 py-1 rounded mx-1">
                         00
                       </span>
                       :
-                      <span className="flex items-center justify-center bg-red-100 text-sm font-serif font-semibold px-2 py-1 rounded mx-1">
+                      <span className="flex items-center justify-center bg-[#D9AA34] text-black text-sm font-serif font-semibold px-2 py-1 rounded mx-1">
                         00
                       </span>
                     </div>
@@ -196,11 +196,11 @@ const Coupon = ({ couponInHome }) => {
                   </span>
                 )}
 
-                <h2 className="font-serif text-lg leading-6 font-medium mb-3">
+                <h2 className="font-serif text-lg text-[#D9AA34] leading-6 font-medium mb-3">
                   {showingTranslateValue(coupon?.title)}
                 </h2>
                 <h2 className="pl-1 text-base font-medium text-[#D9AA34]">
-                  <span className="text-lg md:text-xl lg:text-xl text-red-500 font-bold">
+                  <span className="text-lg md:text-xl lg:text-xl text-[#D9AA34] font-bold">
                     {coupon?.discountType?.type === "fixed" ? (
                       <span>${coupon?.discountType?.value}</span>
                     ) : (
@@ -219,29 +219,29 @@ const Coupon = ({ couponInHome }) => {
                       <span>Coupon</span>
                       <div className="ml-2">
                         {dayjs().isAfter(dayjs(coupon.endTime)) ? (
-                          <span className="text-red-600 inline-block">
+                          <span className="text-[#D9AA34]  inline-block">
                             Inactive
                           </span>
                         ) : (
-                          <span className="text-emerald-600 inline-block">
+                          <span className="text-[#D9AA34] inline-block">
                             Active
                           </span>
                         )}
                       </div>
                     </div>
 
-                    <div className="font-serif border border-dashed bg-emerald-50 py-2 border-emerald-300 rounded-lg text-center block">
+                    <div className="font-serif border border-dashed bg-[#D9AA34] py-2 border-[#D9AA34] rounded-lg text-center block">
                       <CopyToClipboard
                         text={coupon.couponCode}
                         onCopy={() => handleCopied(coupon.couponCode)}
                       >
                         <button className="block w-full">
                           {copied && coupon.couponCode === copiedCode ? (
-                            <span className="text-emerald-600 text-base leading-7 font-semibold">
+                            <span className="text-[#D9AA34]  text-base leading-7 font-semibold">
                               Copied!
                             </span>
                           ) : (
-                            <span className="uppercase font-serif font-semibold text-base leading-7 text-emerald-600">
+                            <span className="uppercase font-serif font-semibold text-base leading-7 text-black">
                               {coupon.couponCode}{" "}
                             </span>
                           )}
@@ -249,10 +249,10 @@ const Coupon = ({ couponInHome }) => {
                       </CopyToClipboard>
                     </div>
                   </div>
-                  <p className="text-xs leading-5 text-gray-500 mt-2">
+                  <p className="text-xs leading-5 text-[#D9AA34]  mt-2">
 
                     * This coupon code will apply on when you shopping more then{" "}
-                    <span className="font-bold text-gray-700">
+                    <span className="font-bold text-[#D9AA34] ">
                       {currency}
                       {coupon.minimumAmount}
                     </span>{" "}
